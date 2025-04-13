@@ -14,7 +14,7 @@ end
 
 namespace :release do
   desc 'Create a new release'
-  task :new => [:check_versions, :confirm, 'spm:test_command', :github]
+  task :new => [:check_versions, :confirm, :github]
 
   desc 'Check if all versions from the podspecs and CHANGELOG match'
   task :check_versions do
@@ -55,6 +55,6 @@ namespace :release do
 
     repo_name = File.basename(`git remote get-url origin`.chomp, '.git').freeze
     puts "Pushing release notes for tag #{tag}"
-    client.create_release("SwiftGen/#{repo_name}", tag, name: tag, body: body)
+    client.create_release("baekteun/#{repo_name}", tag, name: tag, body: body)
   end
 end
