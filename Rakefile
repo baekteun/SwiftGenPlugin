@@ -23,7 +23,7 @@ namespace :spm do
     require 'octokit'
 
     client = Utils.octokit_client
-    release = client.latest_release('SwiftGen/SwiftGen')
+    release = client.latest_release('baekteun/SwiftGen')
     asset = release.assets.find { |a| a.name.end_with? '.artifactbundle.zip' }
 
     raise 'Release asset not found' if asset.nil?
